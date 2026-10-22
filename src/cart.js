@@ -1,12 +1,12 @@
 function notImplemented() {
-  throw new Error('Корзина ещё не реализована. Сначала прочитайте тесты.');
+  throw new Error("Корзина ещё не реализована. Сначала прочитайте тесты.");
 }
 
 function addToCart(arr, product, quantity) {
-  if(quantity <= product.stock && quantity != 0) {
-    if(arr.length != 0) {
-      arr.forEach(item => {
-        if(item.name = product.name) item.quantity += quantity;
+  if (quantity <= product.stock && quantity != 0) {
+    if (arr.length != 0) {
+      arr.forEach((item) => {
+        if ((item.name = product.name)) item.quantity += quantity;
       });
 
       return arr;
@@ -15,15 +15,39 @@ function addToCart(arr, product, quantity) {
   } else {
     throw new RangeError("Значение вне допустимого диапазона!");
   }
-  arr.push({...product}); 
+  arr.push({ ...product });
   return arr;
 }
-function changeQuantity() { return notImplemented(); }
-function removeFromCart() { return notImplemented(); }
-function calculateCartSubtotal() { return notImplemented(); }
-function calculateOrderTotal() { return notImplemented(); }
+function changeQuantity(array, id, quantity) {
+  id -= 1;
+  if (array[id] != undefined) {
+    if (quantity <= array[id].stock && quantity != 0) {
+      array[id].quantity = quantity;
+      return array;
+    } else {
+      throw new RangeError("Значение вне допустимого диапазона!");
+    }
+  }
 
-const cartApi = { addToCart, changeQuantity, removeFromCart, calculateCartSubtotal, calculateOrderTotal };
+  return array;
+}
+function removeFromCart() {
+  return notImplemented();
+}
+function calculateCartSubtotal() {
+  return notImplemented();
+}
+function calculateOrderTotal() {
+  return notImplemented();
+}
 
-if (typeof module !== 'undefined') module.exports = cartApi;
-if (typeof window !== 'undefined') window.cartApi = cartApi;
+const cartApi = {
+  addToCart,
+  changeQuantity,
+  removeFromCart,
+  calculateCartSubtotal,
+  calculateOrderTotal,
+};
+
+if (typeof module !== "undefined") module.exports = cartApi;
+if (typeof window !== "undefined") window.cartApi = cartApi;
