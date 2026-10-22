@@ -31,8 +31,10 @@ function changeQuantity(array, id, quantity) {
 
   return array;
 }
-function removeFromCart() {
-  return notImplemented();
+function removeFromCart(array, id) {
+  id -= 1;
+  array.splice(id, 1)
+  return array;
 }
 function calculateCartSubtotal() {
   return notImplemented();
