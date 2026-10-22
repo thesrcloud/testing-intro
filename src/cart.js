@@ -36,8 +36,13 @@ function removeFromCart(array, id) {
   array.splice(id, 1)
   return array;
 }
-function calculateCartSubtotal() {
-  return notImplemented();
+function calculateCartSubtotal(array, quantity) {
+  let sum = 0;
+  array.forEach(item => {
+    sum += item.price * item.quantity;
+  });
+
+  return sum;
 }
 function calculateOrderTotal() {
   return notImplemented();
