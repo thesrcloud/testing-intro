@@ -2,7 +2,22 @@ function notImplemented() {
   throw new Error('Корзина ещё не реализована. Сначала прочитайте тесты.');
 }
 
-function addToCart() { return notImplemented(); }
+function addToCart(arr, product, quantity) {
+  if(quantity <= product.stock && quantity != 0) {
+    if(arr.length != 0) {
+      arr.forEach(item => {
+        if(item.name = product.name) item.quantity += quantity;
+      });
+
+      return arr;
+    }
+    product.quantity = quantity;
+  } else {
+    throw new RangeError("Значение вне допустимого диапазона!");
+  }
+  arr.push({...product}); 
+  return arr;
+}
 function changeQuantity() { return notImplemented(); }
 function removeFromCart() { return notImplemented(); }
 function calculateCartSubtotal() { return notImplemented(); }
